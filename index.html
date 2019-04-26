@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.css">
+    <link rel="stylesheet" href="src/css/pill_style.css">
+    <link rel="stylesheet" href="src/css/clndr.css">
+</head>
+<body>
+    <H1>My Pill Pall</H1>
+    <br>
+    <P>Welcome to the my Pill Pall Application, your tool for keeping track on the current status of your medication levels, so you won't ever have to deal with the stress associated with running low or running out of your medication and having to wait for you prescription to be refilled.  
+        In order to use this application, please fill out the form below with information relating to the prescription you want to track, and click on the validate button, and we will take care of the rest. 
+        Please note, the clear button clears data from the form, where the reset button is used to reset the form and allow you to input more information about your medications.
+    </P>
+    <br>
+    <h3>My Pill Pall Input Form</h3>
+    <form id="test-Input" onsubmit ="return submitData()">
+        <label for="rxterms"> Drug Name: </label>
+        <input type="text"  id="rxterms" placeholder="Drug Name" size="50" required> <p class="error" id="nameError"></p>
+        <label for="drug_strength"> Strength: </label>
+        <input type="text" id="drug_strengths"  placeholder="Strength list" required size="50"> <p  class="error" id="strengthError"></p>
+        <label for="amountFilled">Quantity Filled:</label>
+        <input type="number" id="amountFilled" placeholder="Enter amount filled"  min="1" required ><p class="error" id="maxError"></p>
+        <label for="takenAmount">Pills Taken: </label>
+        <input type="number" id="takenAmount" required placeholder="enter amount taken per" min="1" ><p class="error" id="takenError"></p> 
+        <label for="timesPerDay">Times Per Day: </label>
+        <input type="number" id="timesPerDay" min="1" required placeholder="Enter times taken per day"><p class="error" id="perError"></p> 
+        <label for="dateFilled">Date Filled:</label>
+        <input type="date" id="dateFilled" placeholder="Enter date filled" ><p class="error" id="fillError"></p>
+        <label for="dateStart">Date Started:</label>
+        <input type="date" id="dateStart"   placeholder="Enter date started"><p class="error" id="startError"></p> 
+        <input type="hidden" id="rxcui" readonly></br>
+        <input type="button" value="Validate" id="validateButton" onClick="formChecker()"/>
+        <input type='submit' value="Submit" id="submitButton" hidden='true' disable="true" onClick='submitData()'/>
+        <input type='reset' value="Clear Data" id='clearButton'>
+        <input type="reset" value="Reset" onClick="window.location.reload()">
+    </form>
+
+    <hr>
+    <div id='output' hidden="true">
+        <h4>Output</h4>
+        <p id='outDrug'></p>
+        <p id='outInfo'></p>
+        <p id='outDate'></p>  
+        <p id='outCounter'></p>
+        <p id='outRemain'></p>
+        <a id="the-link" href="https://www.google.com" target="_blank"> Click this link to learn more about your medication</a>
+        <br>
+        <br>
+        <div class="container">
+                <div class="cal1">
+                        <script type="text/template" id="clndr-template">
+                            <div class="clndr-controls">
+                                <div class="clndr-previous-button">&lsaquo;</div>
+                                <div class="month"><%= month %></div>
+                                <div class="clndr-next-button">&rsaquo;</div>
+                            </div>
+                            <div class="clndr-grid">
+                                <div class="days-of-the-week">
+                                <% _.each(daysOfTheWeek, function (day) { %>
+                                    <div class="header-day"><%= day %></div>
+                                <% }); %>
+                                    <div class="days">
+                                    <% _.each(days, function (day) { %>
+                                        <div class="<%= day.classes %>"><%= day.day %></div>
+                                    <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clndr-today-button">Today</div>
+                        </script>
+                    </div>
+        </div>
+    </div> 
+   
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.js'></script>
+    <script src='src/js/underscore.js'></script>
+    <script src= "src/js/moment.min.js"></script>
+    <script src="src/js/clndr.js"></script>
+    <script src="src/js/autoScript.js"></script>
+    <script src="src/js/testScript.js" ></script>
+    <script src="src/js/testCal.js"></script>
+    
+</body>
+</html>
