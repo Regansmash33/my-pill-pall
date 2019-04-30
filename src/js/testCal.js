@@ -1,8 +1,5 @@
-// Call this from the developer console and you can control both instances
+
 var calendars = {};
-var theCalendarInstance = $('#myCalendar').clndr();
-
-
 
 $("#validateButton").click(function() {
 
@@ -22,37 +19,82 @@ $("#validateButton").click(function() {
     var endDay = inEnd.format("DD");
     var endYear = inEnd.format("YYYY");
 
-    //create string variable for CLNDR to use
-    var calFill = " ";
-    var calStart = " ";
-    var calEnd = " ";
+    //set these variables to string
+    var fYear = String(fillYear);
+    var fMonth = String(fillMonth);
+    var fDay = String(fillDay);
+    var sYear = String(startYear);
+    var sMonth = String(startMonth);
+    var sDay = String(startDay);
+    var eYear = String(endYear);
+    var eMonth = String(endMonth);
+    var eDay = String(endDay);
 
     //format event string for CLNDR use
-     fullFill = (fillYear+"-"+fillMonth+"-"+fillDay);
-     fullStart = (startYear+"-"+startMonth+"-"+startDay);
-     fullEnd = (endYear+"-"+endMonth+"-"+endDay);
+     var fullFill = (fYear+"-"+fMonth+"-"+fDay);
+     var fullStart = (sYear+"-"+sMonth+"-"+sDay);
+     var fullEnd = (eYear+"-"+eMonth+"-"+eDay);
 
      //create string for event
      var calFill = String(fullFill);
-     var calStart= String(fulStart);
+     var calStart= String(fullStart);
      var calEnd = String(fullEnd);
 
 
     // Set up the events array
-    var eventsArray = [
+    var eventArray = [
         {
             title: 'Prescription Filled',
-            date: calFill
+            date: calFill,
         }, {
             title: 'Prescription Started',
-            date: String(calStart).
+            date: calStart,
         }, {
             title: 'Prescription End',
-            date: String(calEnd)
+            date: calEnd,
         }
     ];
 
-
+    calendars.clndr1 = $('.cal1').clndr({
+        events: eventArray,
+        clickEvents: {
+            click: function (target) {
+                console.log('Cal-1 clicked: ', target);
+            },
+            today: function () {
+                console.log('Cal-1 today');
+            },
+            nextMonth: function () {
+                console.log('Cal-1 next month');
+            },
+            previousMonth: function () {
+                console.log('Cal-1 previous month');
+            },
+            onMonthChange: function () {
+                console.log('Cal-1 month changed');
+            },
+            nextYear: function () {
+                console.log('Cal-1 next year');
+            },
+            previousYear: function () {
+                console.log('Cal-1 previous year');
+            },
+            onYearChange: function () {
+                console.log('Cal-1 year changed');
+            },
+            nextInterval: function () {
+                console.log('Cal-1 next interval');
+            },
+            previousInterval: function () {
+                console.log('Cal-1 previous interval');
+            },
+            onIntervalChange: function () {
+                console.log('Cal-1 interval changed');
+            }
+        },
+        showAdjacentMonths: true,
+        adjacentDaysChangeMonth: false
+    });
 
 });
     
