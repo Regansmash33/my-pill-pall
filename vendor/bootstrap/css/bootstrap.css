@@ -86,37 +86,12 @@ p {
 
 .intro{
   margin: 10px;
-  text-align: center;
-  border: #000;
-  background-color: #ffffff;
-  border-style:outset;
-  border-width: .5px;
 }
 
 p.error{
   color: red;
-  font-style: italic;
 }
 
-.formBlock{
-  padding: 1em;
-  margin-right: 1em;
-  margin-left: 1em;
-  margin-top: 1em;
-  margin-bottom: 1em
-}
-
-.formTitle{
-  text-align: center;
-  padding: 1em;
-
-}
-
-.button{
-
-  font-size: 1em;
-
-}
 
 .header {
   background-color: #ffffff;
@@ -125,9 +100,8 @@ p.error{
 }
 
 .divOut{
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
+  margin: 25px;
+  padding: 25px;
   border-color: #000;
   border-style: solid;
   border-width: 1px;
