@@ -7,6 +7,7 @@ Getting Started
 To get started, ethier download the project application and/or just access the github page for this project which is available at https://regansmash33.github.io/my-pill-pall/
 
 Authors
+
 Joseph Turner
 
 License
