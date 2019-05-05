@@ -5,7 +5,7 @@ My Pill Pall is a Javascript application which allows users to input their persc
 
 Getting Started
 
-In order to use this Github Application, ethier download the project application files from Github or just go to htps://regansmash33.github.io/my-pill-pall/
+In order to use this Github Application, ethier download the project application files from Github or just go to https://regansmash33.github.io/my-pill-pall/
 
 Authors
 
