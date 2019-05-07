@@ -3,11 +3,19 @@ var calendars = {};
 
 $("#validateButton").click(function() {
 
-    //get global values and clone as moment
-    var inFill = moment(dateFill);
-    var inStart = moment(start);
-    var inEnd = moment(endDate);
+    //get session storage values
+    var fillIn = sessionStorage.getItem('fillStore');
+    var startIn = sessionStorage.getItem('startStore');
+    var endIn = sessionStorage.getItem('endStore');
 
+    var inFill = moment(fillIn);
+    var inStart = moment(startIn);
+    var inEnd = moment(endIn);
+
+
+    console.log("FillIn " + fillIn);
+    console.log("startIN " + startIn);
+    console.log("endIn " + endIn);
     //get month,date, and year of each event
     var fillMonth = inFill.format("MM");
     var fillDay = inFill.format("DD");
@@ -41,8 +49,9 @@ $("#validateButton").click(function() {
      var calEnd = String(fullEnd);
 
 
+
     // Set up the events array
-    var eventArray = [
+    var eventsArray = [
         {
             title: 'Prescription Filled',
             date: calFill,
@@ -56,7 +65,7 @@ $("#validateButton").click(function() {
     ];
 
     calendars.clndr1 = $('.cal1').clndr({
-        events: eventArray,
+        events: eventsArray,
         clickEvents: {
             click: function (target) {
                 console.log('Cal-1 clicked: ', target);

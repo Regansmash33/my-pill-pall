@@ -1,5 +1,4 @@
-      
-      var start, dateFill, endDate;
+
 
       //used to calculate results
        function submitData() {
@@ -26,7 +25,7 @@
   
          //calculate duration between start date and today
          var now = moment().startOf('day'); //today date
-         start = moment(startDate, 'YYYY-MM-DD'); //start date
+         var start = moment(startDate, 'YYYY-MM-DD'); //start date
          var daysBetween = moment.duration(now.diff(start)).as('days');
   
          //calculate remaining pills and days worth of medication
@@ -35,15 +34,24 @@
 
          //calculate date you will run out of medication
          var endDay = now.clone().add(daysRemain, 'd');
-         endDate= endDay.format('YYYY-MM-DD');
-         
+         var endDate= endDay.format('YYYY-MM-DD');
 
-         //format how dates are displayed in output to make it more readable for the user
 
          //get date values to prepare output
-         dateFill = moment(fillDate).format('YYYY-MM-DD');
+         var dateFill = moment(fillDate).format('YYYY-MM-DD');
          var dateStart= moment(startDate);
          var dateEnd=moment(endDate);
+         
+         //save the filling date, staring date, and ending date to session storage
+
+         var endingString = moment(endDate).toString();
+         var startingString = moment(startDate).toString();
+         var fillingString =moment(dateFill).toString();
+
+         //store strings to session date
+         localStorage.setItem("fillStore", fillingString);
+         localStorage.setItem("startStore", startingString);
+         localStorage.setItem('endStore', endingString);
 
          //format dates from YYYY-MM-DD format to Month name, day of month, year format
 
@@ -73,8 +81,6 @@
          //set rxcui code for the more info url link of the selected pill
          document.querySelector("#the-link").setAttribute('href', rxcuiURL);
 
-         //return global vars
-         return start, dateFill, endDate;
          
        }
        
