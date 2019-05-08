@@ -1,7 +1,7 @@
 
 
       //used to calculate results
-       function submitData() {
+      function submitData() {
 
         //get input data
          
@@ -40,18 +40,23 @@
          //get date values to prepare output
          var dateFill = moment(fillDate).format('YYYY-MM-DD');
          var dateStart= moment(startDate);
-         var dateEnd=moment(endDate);
+         var dateEnd= moment(endDate);
+
          
          //save the filling date, staring date, and ending date to session storage
+         var starter = moment(startDate);
+         var ender = moment(endDate);
+         var filler = moment(fillDate);
 
-         var endingString = moment(endDate).toString();
-         var startingString = moment(startDate).toString();
-         var fillingString =moment(dateFill).toString();
-
+         var endingString = ender.toString();
+         var startingString = starter.toString();
+         var fillingString = filler.toString();
+         
+         console.log(endingString);
          //store strings to session date
-         localStorage.setItem("fillStore", fillingString);
-         localStorage.setItem("startStore", startingString);
-         localStorage.setItem('endStore', endingString);
+         sessionStorage.setItem("fillStore", fillingString);
+         sessionStorage.setItem("startStore", startingString);
+         sessionStorage.setItem("endStore", endingString);
 
          //format dates from YYYY-MM-DD format to Month name, day of month, year format
 

@@ -1,21 +1,24 @@
 
 var calendars = {};
 
-$("#validateButton").click(function() {
+$("#submitButton").click(function() {
 
     //get session storage values
     var fillIn = sessionStorage.getItem('fillStore');
     var startIn = sessionStorage.getItem('startStore');
     var endIn = sessionStorage.getItem('endStore');
 
+    console.log("FillIn " + fillIn);
+    console.log("startIn " + startIn);
+    console.log("endIn " + endIn);
+
+
     var inFill = moment(fillIn);
     var inStart = moment(startIn);
     var inEnd = moment(endIn);
 
 
-    console.log("FillIn " + fillIn);
-    console.log("startIN " + startIn);
-    console.log("endIn " + endIn);
+
     //get month,date, and year of each event
     var fillMonth = inFill.format("MM");
     var fillDay = inFill.format("DD");
