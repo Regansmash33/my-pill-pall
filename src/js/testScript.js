@@ -110,14 +110,16 @@ function formChecker() {
     var goodNumberTimes = validNumTimes(); //flag to check if number inputted for times taken per day is greater then zero
     var goodNumTaken = validNumTaken(); //flag to check if number entered for amount taken per is greater then zero
     
-
+//check if form is valid
     if (goodName === true && goodStrength === true && goodFilled === true && goodTakenPer === true && goodTimesPer === true && goodFillDate === true && goodStart === true && goodCode === true && goodDates === true && goodNumFilled === true && goodNumberTimes === true && goodNumTaken === true) {
         document.getElementById("submitButton").disabled=false;
         document.getElementById("submitButton").hidden=false;
+        //alert user that form can be submited
         alert("Form Successfully Validated. \n" + "Submit button can now be used, please click on it to get your results.");
 
     } 
     else {
+        //inform user that form is invalid and cannot be processed
         alert("Form is invalid, fix any errors in your input to proceed");
     }
 
@@ -236,10 +238,10 @@ function validStartDate() {
 
 //validate that start date is equal to or after fill date
 function validDateDuration(goodDates) {
-    var fillingDate = document.getElementById("dateFilled").value;
-    var fDate = moment(fillingDate, 'YYYY-MM-DD');
-    var startingDate = document.getElementById("dateStart").value;
-    var sDate = moment(startingDate, 'YYYY-MM-DD');
+    var fillingDate = document.getElementById("dateFilled").value; //get date filled
+    var fDate = moment(fillingDate, 'YYYY-MM-DD'); //convert filling date to moment with YYYY-MM-DD format
+    var startingDate = document.getElementById("dateStart").value; //get date prescription is started
+    var sDate = moment(startingDate, 'YYYY-MM-DD'); //convert starting date to moment with YYYYY-MM-DD format
     if (moment(sDate).isBefore(fDate, "days")) {
         //start date is before fill date
         document.getElementById("fillError").innerText = "Fill date cannot be after start date";
